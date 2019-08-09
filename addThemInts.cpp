@@ -3,6 +3,8 @@
 #include <ctime>
 #include <cstdlib>
 
+#define ARRAY_INT_INDEX_COUNT 20
+
 using namespace std;
 
 bool intOverflowAddition (int intA, int intB) {
@@ -33,10 +35,16 @@ int main(int argc, char *argv[]) {
 	srand((unsigned int)time(NULL));
 
 	cout << "Integers: ";
-	for (intIndex = 0; intIndex < 10; intIndex++) {
+	for (intIndex = 0; intIndex < ARRAY_INT_INDEX_COUNT; intIndex++) {
 		if (intIndex > 0) { cout << ", ";  }
 
-		intRandom = (rand() % INT_MAX) + 1;
+		// Commented out because RAND_MAX is garunteed to be at least 32767.
+		// This value being smaller than INT_MAX (2147483647) will not overflow the integer.
+		// I had to durring testing push the ARRAY_INT_INDEX_COUNT past 160,000 integers to get a overflow.
+		//intRandom = (rand() % INT_MAX) + 1;
+		//
+		// So instead we just go with rand() + 1 to push 1 through 32767
+		intRandom = (rand() + 1);
 
 		arrayOfInt.push_back(intRandom);
 
