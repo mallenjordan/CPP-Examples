@@ -28,8 +28,7 @@ void permutate (vector<string> &strArray, string strBuffer, int intStart, int in
 	}
 }
 
-// Driver Code
-int main() {
+int main(void) {
 	string strBuffer;
 	vector<string> strArray;
 	bool bMatchFound = false;
